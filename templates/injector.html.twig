@@ -24,6 +24,7 @@ const config = {
         subtree:   true
     };
 
+<<<<<<< HEAD
     const articleObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
@@ -48,4 +49,22 @@ const config = {
 
     document.addEventListener('DOMContentLoaded', initArticles);
 
+=======
+const observerArticle = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+            if ($(node).hasClass('collection-item')) {
+                initArticles();
+            }
+        });
+    });
+});
+
+observerArticle.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
+initArticles();
+>>>>>>> 3d8f0468747c2c3402ae05d890eb45705521db3a
 </script>
