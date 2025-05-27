@@ -19,37 +19,10 @@ ArticleEditor.settings = {
     }
 };
 
-const config = {
-        childList: true,
-        subtree:   true
-    };
+function initArticles() {
+    ArticleEditor('.article-field', {{ article_settings() }});
+}
 
-<<<<<<< HEAD
-    const articleObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                for (let node of mutation.addedNodes) {
-                    if (
-                        node.nodeType === Node.ELEMENT_NODE &&
-                        node.classList.contains('collection-item')
-                    ) {
-                        initArticles();
-                        return;
-                    }
-                    if (node.querySelector && node.querySelector('.collection-item')) {
-                        initArticles();
-                        return;
-                    }
-                }
-            }
-        });
-    });
-
-    articleObserver.observe(document.body, config);
-
-    document.addEventListener('DOMContentLoaded', initArticles);
-
-=======
 const observerArticle = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         mutation.addedNodes.forEach(function(node) {
@@ -66,5 +39,4 @@ observerArticle.observe(document.body, {
 });
 
 initArticles();
->>>>>>> 3d8f0468747c2c3402ae05d890eb45705521db3a
 </script>
